@@ -27,10 +27,9 @@ jobs:
       - name: Setup web app
         run: npm run serve-app &
 
-      - name: Run tests
-        ## ******CLOSE THE DEAL TODO*******: SUBSTITUTE BY THE COMMAND IN THE IN APP ONBOARDING
+      - name: Run tests 
         run: |
-          echo "noop"
+          NODE_OPTIONS="-r dd-trace/ci/init" DD_ENV=test-roca DD_SERVICE=close-the-deal-test npm test
         continue-on-error: true
         env:
           NODE_OPTIONS: -r dd-trace/ci/init
